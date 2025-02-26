@@ -135,7 +135,7 @@ public class ApplicantController {
 	}
 	
 	@PutMapping("/acceptOffer")
-	public ResponseEntity<?> acceptOffer(@RequestParam Integer job_posting_id, @RequestBody JobStatusRequest r){
+	public ResponseEntity<?> acceptOffer(@RequestParam Integer application_id, @RequestBody JobStatusRequest r){
 		try {
 			var notes = r.getNotes();
 			if(notes == null) {
@@ -144,7 +144,7 @@ public class ApplicantController {
 			var user = userService.getCurrentUser();
 			var name = user.getName();
 			var user_id = user.getUserId();
-			int count = applicationService.modifyJobApplication(job_posting_id, "Hired", notes, user_id, name);
+			int count = applicationService.modifyJobApplication(application_id, "Hired", notes, user_id, name);
 			if(count == 1) {
 				return ResponseEntity.ok(null);
 			}else {
@@ -157,7 +157,7 @@ public class ApplicantController {
 	}
 	
 	@PostMapping("/rejectJob")
-	public ResponseEntity<?> reject(@RequestParam Integer job_posting_id, @RequestBody JobStatusRequest r){
+	public ResponseEntity<?> reject(@RequestParam Integer application_id, @RequestBody JobStatusRequest r){
 		try {
 			var notes = r.getNotes();
 			if(notes == null) {
@@ -166,7 +166,7 @@ public class ApplicantController {
 			var user = userService.getCurrentUser();
 			var name = user.getName();
 			var user_id = user.getUserId();
-			int count = applicationService.modifyJobApplication(job_posting_id, "Applicant_Rejected", notes, user_id, name);
+			int count = applicationService.modifyJobApplication(application_id, "Applicant_Rejected", notes, user_id, name);
 			if(count == 1) {
 				return ResponseEntity.ok(null);
 			}else {

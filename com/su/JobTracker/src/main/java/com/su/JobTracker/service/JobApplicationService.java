@@ -62,6 +62,7 @@ public class JobApplicationService {
 	
 	@Transactional
 	public int modifyJobApplication(int application_id, String application_status, String new_note, int user_id, String name)  throws Exception{
+		
 		var application = findJobApplicationById(application_id);
 		application.setApplicationStatus(application_status);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
@@ -78,7 +79,7 @@ public class JobApplicationService {
 			break;
 		case("Applicant_Rejected"):
 			status_jp = "辞退";
-			application_status = "Rejected";
+			application.setApplicationStatus("Rejected");
 			break;
 		case("Hired"):
 			status_jp = "入社決定";

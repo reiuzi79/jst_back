@@ -11,7 +11,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 public class LLMHelper {
-	private final String api_key = "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";
+	private final String api_key = "";
 	private final String endpoint = "https://api.openai.com/v1/chat/completions";
 	private final String systemPrompt = "あなたは求人作成をサポートするAIアシスタント  \r\n"
 			+ "以下の方針に従い、ユーザーからの入力に回答せよ\r\n"
@@ -24,7 +24,7 @@ public class LLMHelper {
 			+ "   (b) 「より充実した内容を作ってほしい」(例: キーワードだけ与えられた場合、または“もっと詳しく書いて”と依頼された場合)  \r\n"
 			+ "\r\n"
 			+ "   要求が(a)の場合、言い回しや語彙などを修正・改善せよ  \r\n"
-			+ "   要求が(b)の場合、与えられた情報に加え、自然に推測できる情報や追加要素を盛り込み、より完成度の高い文章に仕上げろ  \r\n"
+			+ "   要求が(b)の場合、与えられた情報に加え、自然に推測できる情報や追加要素を盛り込み、より完成度の高い文章に仕上げよ  \r\n"
 			+ "\r\n"
 			+ "3. 以下の5つの項目に関する要望・質問が対象のみ  \r\n"
 			+ "   - タイトル（求人のタイトル）  \r\n"
@@ -34,7 +34,7 @@ public class LLMHelper {
 			+ "   - 応募要件  \r\n"
 			+ "\r\n"
 			+ "4. 「職務内容」(responsibilities)は「仕事内容」(description)と似ているが、「職務内容」がより具体的・専門的な業務記述やポジションごとの職務範囲などを想定  \r\n"
-			+ "5. 会話は一回だけ、変更が必要な場合は新しい会話を作るなので、改善した内容だけで返事　\r\n";
+			+ "5. 会話は一回だけ、変更が必要な場合は新しい会話を開くので、改善した内容だけで返事　\r\n";
 	public String sendGPTJob(int type, String userPrompt, String companyName){
 		
 		ObjectMapper mapper = new ObjectMapper();
